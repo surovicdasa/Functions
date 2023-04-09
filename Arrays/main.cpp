@@ -1,12 +1,17 @@
-#include<iostream>
+﻿#include<iostream>
 using namespace std;
 
 void FillRand(int arr[], const int n,int minRand=0,int maxRand=100);
 void Print(int arr[], const int n);
 void ReversPrint(int arr[], const int n);
-int Sum(int arr[], const int n);
+double Sum(int arr[], const int n);
+double Avg(int arr[], const int n);
+int minValueIn(int arr[], const int n);
+int maxValueIn(int arr[], const int n);
+void Sort(int arr[], const int n);
 
-void main()
+
+int main()
 {
 
 	const int n = 5;
@@ -15,7 +20,35 @@ void main()
 	Print(arr, n);
 	ReversPrint(arr, n);
 	cout << "Summa: " << Sum(arr, n) << endl;
+	cout << "Srednee arefmeticheskoye:" << Avg(arr, n) << endl;
+	cout << "Minimal value is " << minValueIn(arr, n) << endl;
+	cout << "Maximal value is " << maxValueIn(arr, n) << endl;
+	Sort(arr, n);
+	Print(arr, n);
+	int raz;
+	cout << "Enter number of shifts "; cin >> raz;
+	for (int i = 0; i < raz; i++)
+	{
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = arr[i + 1];
 
+		}
+		arr[n - 1] = buffer;
+	}
+	Print(arr, n);
+	for (int i = 0; i < raz; i++)
+	{
+		int buffer = arr[4];
+		for (int i = n - 1; i >= 0; i--)
+		{
+			arr[i] = arr[i + 1];
+
+		}
+		arr[n - 1] = buffer;
+	}
+	Print(arr, n);
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
@@ -51,7 +84,7 @@ void ReversPrint(int arr[], const int n)
 	}
 	cout << endl;
 }
-int Sum(int arr[], const int n)
+double Sum(int arr[], const int n)
 {
 	int sum = 0;
 	for (int i = 0; i < n; i++)
@@ -59,4 +92,44 @@ int Sum(int arr[], const int n)
 		sum += arr[i];
 	}
 	return sum;
+}
+double Avg(int arr[], const int n)
+{
+	double sr = Sum(arr,n) / n;
+	return sr;
+}
+int minValueIn(int arr[], const int n)
+{
+	int min = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < min) min = arr[i];
+	}
+	return min;
+}
+int maxValueIn(int arr[], const int n)
+{
+	int max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+}
+void Sort(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			arr[i];//выбранный элемент
+			arr[j];//перебираемый элемент
+			if (arr[j] < arr[i])
+			{
+				int buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
+	}
 }
