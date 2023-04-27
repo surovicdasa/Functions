@@ -9,6 +9,7 @@ void Print(int arr[rows][cols], const int rows, const int cols);
 void Print(double arr[rows][cols], const int rows, const int cols);
 void Print(char arr[rows][cols], const int rows, const int cols);
 
+
 void ReversPrint(int arr[], const int n);
 void ReversPrint(double arr[], const int n);
 void ReversPrint(char arr[], const int n);
