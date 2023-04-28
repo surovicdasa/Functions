@@ -13,7 +13,6 @@ void Sort(int arr[], const int n);
 
 int main()
 {
-
 	const int n = 5;
 	int arr[n];
 	FillRand(arr, n,200,100);
