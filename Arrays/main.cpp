@@ -9,6 +9,8 @@ double Avg(int arr[], const int n);
 int minValueIn(int arr[], const int n);
 int maxValueIn(int arr[], const int n);
 void Sort(int arr[], const int n);
+void shiftLeft(int arr[], const int n, int raz);
+
 
 
 int main()
@@ -27,28 +29,9 @@ int main()
 	Print(arr, n);
 	int raz;
 	cout << "Enter number of shifts "; cin >> raz;
-	for (int i = 0; i < raz; i++)
-	{
-		int buffer = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = arr[i + 1];
-
-		}
-		arr[n - 1] = buffer;
-	}
+	shiftLeft(arr, n, raz);
 	Print(arr, n);
-	for (int i = 0; i < raz; i++)
-	{
-		int buffer = arr[4];
-		for (int i = n - 1; i >= 0; i--)
-		{
-			arr[i] = arr[i + 1];
 
-		}
-		arr[n - 1] = buffer;
-	}
-	Print(arr, n);
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
@@ -131,5 +114,18 @@ void Sort(int arr[], const int n)
 				arr[j] = buffer;
 			}
 		}
+	}
+}
+void shiftLeft(int arr[], const int n, int raz)
+{
+	for (int i = 0; i < raz; i++)
+	{
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = arr[i + 1];
+
+		}
+		arr[n - 1] = buffer;
 	}
 }
