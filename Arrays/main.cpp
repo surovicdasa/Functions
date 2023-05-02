@@ -10,6 +10,7 @@ int minValueIn(int arr[], const int n);
 int maxValueIn(int arr[], const int n);
 void Sort(int arr[], const int n);
 void shiftLeft(int arr[], const int n, int raz);
+void shiftRight(int arr[], const int n, int raz);
 
 
 
@@ -30,6 +31,8 @@ int main()
 	int raz;
 	cout << "Enter number of shifts "; cin >> raz;
 	shiftLeft(arr, n, raz);
+	Print(arr, n);
+	shiftRight(arr, n, raz);
 	Print(arr, n);
 
 }
@@ -127,5 +130,17 @@ void shiftLeft(int arr[], const int n, int raz)
 
 		}
 		arr[n - 1] = buffer;
+	}
+}
+void shiftRight(int arr[], const int n, int raz)
+{
+	for (int i = 0; i < raz; i++)
+	{
+		int buffer = arr[n - 1];
+		for (int i = n - 1; i >= 0; i--)
+		{
+			arr[i] = arr[i - 1];
+		}
+		arr[0] = buffer;
 	}
 }
